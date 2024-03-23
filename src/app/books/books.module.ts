@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SongsComponent } from './songs.component';
-import { SongDetailComponent } from '../song-detail/song-detail.component';
-import { SongCreateComponent } from '../song-create/song-create.component';
+import { BooksComponent } from './books.component';
+import { SongDetailComponent } from './book-detail/song-detail.component';
+import { SongCreateComponent } from './book-create/song-create.component';
 
 
 
 @NgModule({
   declarations: [
-    SongsComponent,
+    BooksComponent,
     SongDetailComponent,
     SongCreateComponent
   ],

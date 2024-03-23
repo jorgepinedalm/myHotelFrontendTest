@@ -1,14 +1,14 @@
 import { Injectable } from "@angular/core";
 import { State, Selector, Action, StateContext } from "@ngxs/store";
 import { tap } from "rxjs";
-import { SongsService } from "../services/songs.service";
-import { AddSongs, DeleteSongs, GetSongs, UpdateSongs } from "../actions/app.actions";
+import { BooksService } from "../services/books.service";
+import { AddBooks, DeleteBooks, GetBooks, UpdateBooks } from "../actions/app.actions";
 
-export class SongStateModel {
+export class BookStateModel {
     songs: any
 }
 
-@State<SongStateModel>({
+@State<BookStateModel>({
     name: 'appstate',
     defaults: {
         songs: []
@@ -17,16 +17,16 @@ export class SongStateModel {
 
 @Injectable()
 export class AppState {
-    constructor(private songService: SongsService) { }
+    constructor(private songService: BooksService) { }
 
     @Selector()
-    static selectStateData(state:SongStateModel){
+    static selectStateData(state:BookStateModel){
         return state.songs;
     }
 
-    @Action(GetSongs)
-    getDataFromState(ctx: StateContext<SongStateModel>) {
-        return this.songService.fetchSongs().pipe(tap(returnData => {
+    @Action(GetBooks)
+    getDataFromState(ctx: StateContext<BookStateModel>) {
+        return this.songService.fetchBooks().pipe(tap(returnData => {
             const state = ctx.getState();
 
             ctx.setState({
@@ -36,9 +36,9 @@ export class AppState {
         }))
     }
 
-    @Action(AddSongs)
-    addDataToState(ctx: StateContext<SongStateModel>, { payload }: AddSongs) {
-        return this.songService.addSongs(payload).pipe(tap(returnData => {
+    @Action(AddBooks)
+    addDataToState(ctx: StateContext<BookStateModel>, { payload }: AddBooks) {
+        return this.songService.addBooks(payload).pipe(tap(returnData => {
             const state=ctx.getState();
             ctx.patchState({
                 songs:[...state.songs,returnData]
@@ -46,9 +46,9 @@ export class AppState {
         }))
     }
 
-    @Action(UpdateSongs)
-    updateDataOfState(ctx: StateContext<SongStateModel>, { payload, id, i }: UpdateSongs) {
-        return this.songService.updateSong(payload, i).pipe(tap(returnData => {
+    @Action(UpdateBooks)
+    updateDataOfState(ctx: StateContext<BookStateModel>, { payload, id, i }: UpdateBooks) {
+        return this.songService.updateBook(payload, i).pipe(tap(returnData => {
             const state=ctx.getState();
 
             const userList = [...state.songs];
@@ -61,9 +61,9 @@ export class AppState {
         }))
     }
 
-    @Action(DeleteSongs)
-    deleteDataFromState(ctx: StateContext<SongStateModel>, { id }: DeleteSongs) {
-        return this.songService.deleteSong(id).pipe(tap(returnData => {
+    @Action(DeleteBooks)
+    deleteDataFromState(ctx: StateContext<BookStateModel>, { id }: DeleteBooks) {
+        return this.songService.deleteBook(id).pipe(tap(returnData => {
             const state=ctx.getState();
             console.log("The is is",id)
             //Here we will create a new Array called filteredArray which won't contain the given id and set it equal to state.todo
