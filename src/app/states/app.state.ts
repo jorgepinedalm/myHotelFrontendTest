@@ -3,9 +3,13 @@ import { State, Selector, Action, StateContext } from "@ngxs/store";
 import { tap } from "rxjs";
 import { BooksService } from "../services/books.service";
 import { AddBooks, DeleteBooks, GetBooks, UpdateBooks } from "../actions/app.actions";
+import { Book } from "../models/book";
 
 export class BookStateModel {
-    books: any
+    books: Book[]
+    constructor(){
+        this.books = [];
+    }
 }
 
 @State<BookStateModel>({

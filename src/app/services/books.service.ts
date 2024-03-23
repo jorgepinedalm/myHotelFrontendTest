@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { Book } from '../models/book';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BooksService {
 
-  books:any[];
+  books:Book[];
 
   constructor() { 
     this.books = [
-      {id: 1, title: "My favorite book", abstract: "03:20", gender: "comedy", rating: 5},
-      {id: 2, title: "My favorite book part 2", abstract: "03:20", gender: "comedy", rating: 5}
+      {idBook: 1, title: "My favorite book", abstract: "03:20", authors: ["Jorge Pineda"], rating: 5, visible: true},
+      {idBook: 2, title: "My favorite book part 2", abstract: "03:20", authors: ["Jorge Pineda"], rating: 5, visible: true}
     ];
   }
 
@@ -19,18 +20,18 @@ export class BooksService {
     return of(this.books);
   }
 
-  addBooks(bookData:any){
-    return of([...this.books, bookData]);
+  addBooks(bookData:Book):Observable<Book>{
+    return of(bookData);
   }
 
   deleteBook(id:number){
-    return of(this.books.filter(book => book.id != id));
+    return of(this.books.filter(book => book.idBook != id));
   }
 
-  updateBook(payload:any,id:number){
-    let foundBook = this.books.find(book => book.id == id);
+  updateBook(payload:Book,id:number){
+    let foundBook = this.books.find(book => book.idBook == id);
     if(foundBook){
-      foundBook = {...foundBook, payload};
+      foundBook = {...foundBook, ...payload};
     }
     return of(foundBook);
   }

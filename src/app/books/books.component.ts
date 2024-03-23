@@ -3,6 +3,7 @@ import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { AppState } from '../states/app.state';
 import { GetBooks } from '../actions/app.actions';
+import { Book } from '../models/book';
 
 @Component({
   selector: 'app-books',
@@ -10,7 +11,7 @@ import { GetBooks } from '../actions/app.actions';
   styleUrls: ['./books.component.scss']
 })
 export class BooksComponent implements OnInit {
-  books: any[];
+  books: Book[];
   @Select(AppState.selectStateData) bookInfo$?: Observable<any>;
   constructor(private store: Store){
     this.books = [];
