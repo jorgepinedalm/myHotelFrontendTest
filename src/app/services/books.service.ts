@@ -10,7 +10,8 @@ export class BooksService {
 
   constructor() { 
     this.books = [
-      {id: 1, title: "My favorite book", abstract: "03:20", gender: "comedy", rating: 5}
+      {id: 1, title: "My favorite book", abstract: "03:20", gender: "comedy", rating: 5},
+      {id: 2, title: "My favorite book part 2", abstract: "03:20", gender: "comedy", rating: 5}
     ];
   }
 
