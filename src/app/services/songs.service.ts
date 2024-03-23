@@ -9,7 +9,9 @@ export class SongsService {
   songs:any[];
 
   constructor() { 
-    this.songs = [];
+    this.songs = [
+      {id: 1, name: "My favorite song", duration: "03:20", gender: "pop", rating: 5}
+    ];
   }
 
   fetchSongs(){

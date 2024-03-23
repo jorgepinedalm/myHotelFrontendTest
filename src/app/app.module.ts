@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsModule } from '@ngxs/store';
+import { AppState } from './states/app.state';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { NgxsModule } from '@ngxs/store';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxsModule.forRoot([]), NgxsLoggerPluginModule.forRoot()
+    NgxsModule.forRoot([AppState]), NgxsLoggerPluginModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
