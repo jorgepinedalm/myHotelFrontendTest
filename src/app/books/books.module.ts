@@ -6,6 +6,9 @@ import { SongCreateComponent } from './book-create/song-create.component';
 import { BooksRoutingModule } from './books-routing.module';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     CommonModule,
     BooksRoutingModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class BooksModule { }

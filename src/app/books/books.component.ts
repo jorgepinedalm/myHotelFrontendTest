@@ -6,6 +6,7 @@ import { GetBooks } from '../actions/app.actions';
 import { Book } from '../models/book';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-books',
@@ -17,6 +18,7 @@ export class BooksComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [];
   dataSource: MatTableDataSource<Book>;
   @ViewChild(MatPaginator) paginator?: MatPaginator;
+  @ViewChild(MatSort) sort?: MatSort;
 
   @Select(AppState.selectStateData) bookInfo$?: Observable<any>;
 
@@ -32,6 +34,7 @@ export class BooksComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = <MatPaginator>this.paginator;
+    this.dataSource.sort = <MatSort>this.sort;
   }
 
   getBooks(): void{
@@ -40,6 +43,15 @@ export class BooksComponent implements OnInit, AfterViewInit {
       this.books = returnData;
       this.dataSource.data = this.books;
     })
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
 }

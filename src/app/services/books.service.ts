@@ -12,7 +12,7 @@ export class BooksService {
   constructor() { 
     this.books = [];
     for(let i = 0; i < 15; i++){
-      this.books.push({idBook: i+1, title: "My favorite book", abstract: "03:20", authors: ["Jorge Pineda"], rating: Math.random() * 5, visible: true});
+      this.books.push({idBook: i+1, title: "My favorite book " + (i+1), abstract: "03:20", authors: ["Jorge Pineda"], rating: Math.random() * 5, visible: true});
     }
   }
 
