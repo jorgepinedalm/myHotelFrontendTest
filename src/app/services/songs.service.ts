@@ -17,11 +17,11 @@ export class SongsService {
   }
 
   addSongs(songData:any){
-    return [...this.songs, songData];
+    return of([...this.songs, songData]);
   }
 
   deleteSong(id:number){
-    return this.songs.filter(song => song.id != id);
+    return of(this.songs.filter(song => song.id != id));
   }
 
   updateSong(payload:any,id:number){
@@ -29,6 +29,6 @@ export class SongsService {
     if(foundSong){
       foundSong = {...foundSong, payload};
     }
-    return foundSong;
+    return of(foundSong);
   }
 }
