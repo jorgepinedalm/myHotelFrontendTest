@@ -10,10 +10,10 @@ export class BooksService {
   books:Book[];
 
   constructor() { 
-    this.books = [
-      {idBook: 1, title: "My favorite book", abstract: "03:20", authors: ["Jorge Pineda"], rating: 5, visible: true},
-      {idBook: 2, title: "My favorite book part 2", abstract: "03:20", authors: ["Jorge Pineda"], rating: 5, visible: true}
-    ];
+    this.books = [];
+    for(let i = 0; i < 15; i++){
+      this.books.push({idBook: i+1, title: "My favorite book", abstract: "03:20", authors: ["Jorge Pineda"], rating: Math.random() * 5, visible: true});
+    }
   }
 
   fetchBooks(){

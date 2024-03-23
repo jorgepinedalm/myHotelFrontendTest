@@ -4,8 +4,8 @@ import { BooksComponent } from './books.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { SongCreateComponent } from './book-create/song-create.component';
 import { BooksRoutingModule } from './books-routing.module';
-
-
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,9 @@ import { BooksRoutingModule } from './books-routing.module';
   ],
   imports: [
     CommonModule,
-    BooksRoutingModule
+    BooksRoutingModule,
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class BooksModule { }
