@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BooksComponent } from './books.component';
 import { SongDetailComponent } from './book-detail/song-detail.component';
 import { SongCreateComponent } from './book-create/song-create.component';
+import { BooksRoutingModule } from './books-routing.module';
 
 
 
@@ -13,7 +14,8 @@ import { SongCreateComponent } from './book-create/song-create.component';
     SongCreateComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    BooksRoutingModule
   ]
 })
-export class SongsModule { }
+export class BooksModule { }
