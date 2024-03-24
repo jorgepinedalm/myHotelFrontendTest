@@ -1,43 +1,43 @@
 import { Injectable } from "@angular/core";
 import { State, Selector, Action, StateContext } from "@ngxs/store";
 import { tap } from "rxjs";
-import { BooksService } from "../services/books.service";
-import { AddBooks, DeleteBooks, GetBookById, GetBooks, UpdateBooks } from "../actions/app.actions";
-import { Book } from "../models/book";
+import { TasksService } from "../services/tasks.service";
+import { AddTasks, DeleteTasks, GetTaskById, GetTasks, UpdateTasks } from "../actions/app.actions";
+import { Task } from "../models/task";
 
-export class BookStateModel {
-    books: Book[]
-    selectedBook?: Book;
+export class TaskStateModel {
+    books: Task[]
+    selectedTask?: Task;
     constructor(){
         this.books = [];
     }
 }
 
-@State<BookStateModel>({
+@State<TaskStateModel>({
     name: 'appstate',
     defaults: {
         books: [],
-        selectedBook: undefined
+        selectedTask: undefined
     }
 })
 
 @Injectable()
 export class AppState {
-    constructor(private bookService: BooksService) { }
+    constructor(private bookService: TasksService) { }
 
     @Selector()
-    static selectStateData(state:BookStateModel){
+    static selectStateData(state:TaskStateModel){
         return state.books;
     }
 
     @Selector()
-    static selectSelectedBook(state: BookStateModel) {
-        return state.selectedBook;
+    static selectSelectedTask(state: TaskStateModel) {
+        return state.selectedTask;
     }
 
-    @Action(GetBooks)
-    getDataFromState(ctx: StateContext<BookStateModel>) {
-        return this.bookService.fetchBooks().pipe(tap(returnData => {
+    @Action(GetTasks)
+    getDataFromState(ctx: StateContext<TaskStateModel>) {
+        return this.bookService.fetchTasks().pipe(tap(returnData => {
             const state = ctx.getState();
 
             ctx.setState({
@@ -47,24 +47,24 @@ export class AppState {
         }))
     }
 
-    @Action(GetBookById)
-    getBookById(ctx: StateContext<BookStateModel>, { id }: GetBookById) {
-        return this.bookService.getBookById(id).pipe(tap(returnData => {
+    @Action(GetTaskById)
+    getTaskById(ctx: StateContext<TaskStateModel>, { id }: GetTaskById) {
+        return this.bookService.getTaskById(id).pipe(tap(returnData => {
             const state = ctx.getState();
-            const book = state.books.find(book => book.idBook === id);
+            const book = state.books.find(book => book.idTask === id);
             if (book) {
                 // Actualiza el estado solo si se encuentra el libro con el ID dado
                 ctx.patchState({
                     ...state,
-                    selectedBook: book
+                    selectedTask: book
                 });
             }
         }));
     }
 
-    @Action(AddBooks)
-    addDataToState(ctx: StateContext<BookStateModel>, { payload }: AddBooks) {
-        return this.bookService.addBooks(payload).pipe(tap(returnData => {
+    @Action(AddTasks)
+    addDataToState(ctx: StateContext<TaskStateModel>, { payload }: AddTasks) {
+        return this.bookService.addTasks(payload).pipe(tap(returnData => {
             const state=ctx.getState();
             ctx.patchState({
                 books:[...state.books,returnData]
@@ -72,9 +72,9 @@ export class AppState {
         }))
     }
 
-    @Action(UpdateBooks)
-    updateDataOfState(ctx: StateContext<BookStateModel>, { payload, id, i }: UpdateBooks) {
-        return this.bookService.updateBook(payload, i).pipe(tap(returnData => {
+    @Action(UpdateTasks)
+    updateDataOfState(ctx: StateContext<TaskStateModel>, { payload, id, i }: UpdateTasks) {
+        return this.bookService.updateTask(payload, i).pipe(tap(returnData => {
             const state=ctx.getState();
 
             const userList = [...state.books];
@@ -87,9 +87,9 @@ export class AppState {
         }))
     }
 
-    @Action(DeleteBooks)
-    deleteDataFromState(ctx: StateContext<BookStateModel>, { id }: DeleteBooks) {
-        return this.bookService.deleteBook(id).pipe(tap(returnData => {
+    @Action(DeleteTasks)
+    deleteDataFromState(ctx: StateContext<TaskStateModel>, { id }: DeleteTasks) {
+        return this.bookService.deleteTask(id).pipe(tap(returnData => {
             const state=ctx.getState();
             console.log("The is is",id)
             //Here we will create a new Array called filteredArray which won't contain the given id and set it equal to state.todo

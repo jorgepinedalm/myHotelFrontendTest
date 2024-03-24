@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Book } from '../models/book';
+import { Task } from '../models/task';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BooksService {
+export class TasksService {
 
-  books:Book[];
+  books:Task[];
 
   constructor() { 
     this.books = [];
     const abstract = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus purus et ante eleifend, ut mattis massa lacinia. Etiam consequat, tellus id finibus tincidunt, erat mauris aliquam libero, non viverra ligula nunc ac justo. Morbi mollis placerat.";
     const cover = "https://picsum.photos/150/200";
     for(let i = 0; i < 15; i++){
-      this.books.push({idBook: i+1, cover: cover, title: "My favorite book " + (i+1), abstract: abstract, authors: ["Jorge Pineda"], publicationDate: this.generateRandomDate(), rating: Math.random() * 5, visible: true});
+      this.books.push({idTask: i+1, cover: cover, title: "My favorite book " + (i+1), abstract: abstract, authors: ["Jorge Pineda"], publicationDate: this.generateRandomDate(), rating: Math.random() * 5, visible: true});
     }
     this.books[10].authors.push("Pepito perez Parra");
   }
@@ -27,27 +27,27 @@ export class BooksService {
     return randomDate;
   }
 
-  fetchBooks(){
+  fetchTasks(){
     return of(this.books);
   }
 
-  getBookById(id:number):Observable<Book | undefined>{
-    return of(this.books.find(book => book.idBook == id))
+  getTaskById(id:number):Observable<Task | undefined>{
+    return of(this.books.find(book => book.idTask == id))
   }
 
-  addBooks(bookData:Book):Observable<Book>{
+  addTasks(bookData:Task):Observable<Task>{
     return of(bookData);
   }
 
-  deleteBook(id:number){
-    return of(this.books.filter(book => book.idBook != id));
+  deleteTask(id:number){
+    return of(this.books.filter(book => book.idTask != id));
   }
 
-  updateBook(payload:Book,id:number){
-    let foundBook = this.books.find(book => book.idBook == id);
-    if(foundBook){
-      foundBook = {...foundBook, ...payload};
+  updateTask(payload:Task,id:number){
+    let foundTask = this.books.find(book => book.idTask == id);
+    if(foundTask){
+      foundTask = {...foundTask, ...payload};
     }
-    return of(foundBook);
+    return of(foundTask);
   }
 }

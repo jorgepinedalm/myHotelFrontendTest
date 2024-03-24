@@ -1,5 +1,5 @@
-export interface Book {
-    idBook: number;
+export interface Task {
+    idTask: number;
     cover?:String;
     title: string;
     abstract?: string;

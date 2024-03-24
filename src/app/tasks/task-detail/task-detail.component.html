@@ -1,18 +1,18 @@
-<h2 mat-dialog-title>Book information</h2>
+<h2 mat-dialog-title>Task information</h2>
 <mat-dialog-content class="mat-typography">
-    <div *ngIf="selectedBook$ | async as selectedBook">
+    <div *ngIf="selectedTask$ | async as selectedTask">
         <div class="grid grid-cols-3 gap-4">
             <div class="book__cover">
-                <img [src]="selectedBook.cover" alt="Book cover">
+                <img [src]="selectedTask.cover" alt="Task cover">
             </div>
             <div class="col-span-2">
                 <div class="field">
                     <label>Title</label>
-                    <p>{{ selectedBook.title }}</p>
+                    <p>{{ selectedTask.title }}</p>
                 </div>
                 <div class="field">
                     <label>Authors</label>
-                    <mat-chip *ngFor="let author of selectedBook.authors">
+                    <mat-chip *ngFor="let author of selectedTask.authors">
                         <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu"/>
                         {{author}}
                     </mat-chip>
@@ -20,7 +20,7 @@
             </div>
         </div>
         
-        <p *ngIf="selectedBook.abstract">{{selectedBook.abstract}}</p>
+        <p *ngIf="selectedTask.abstract">{{selectedTask.abstract}}</p>
     </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">

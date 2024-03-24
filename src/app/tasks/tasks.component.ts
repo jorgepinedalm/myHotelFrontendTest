@@ -2,23 +2,23 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { AppState } from '../states/app.state';
-import { GetBooks } from '../actions/app.actions';
-import { Book } from '../models/book';
+import { GetTasks } from '../actions/app.actions';
+import { Task } from '../models/task';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
-import { BookDetailComponent } from './book-detail/book-detail.component';
+import { TaskDetailComponent } from './task-detail/task-detail.component';
 
 @Component({
-  selector: 'app-books',
-  templateUrl: './books.component.html',
-  styleUrls: ['./books.component.scss']
+  selector: 'app-tasks',
+  templateUrl: './tasks.component.html',
+  styleUrls: ['./tasks.component.scss']
 })
-export class BooksComponent implements OnInit, AfterViewInit {
-  books: Book[];
+export class TasksComponent implements OnInit, AfterViewInit {
+  tasks: Task[];
   displayedColumns: string[] = [];
-  dataSource: MatTableDataSource<Book>;
+  dataSource: MatTableDataSource<Task>;
   @ViewChild(MatPaginator) paginator?: MatPaginator;
   @ViewChild(MatSort) sort?: MatSort;
 
@@ -28,13 +28,13 @@ export class BooksComponent implements OnInit, AfterViewInit {
     private store: Store,
     public dialog: MatDialog
   ){
-    this.books = [];
+    this.tasks = [];
     this.displayedColumns = ['title', 'authors', 'publicationDate', 'rating', 'actions'];
-    this.dataSource = new MatTableDataSource(this.books);
+    this.dataSource = new MatTableDataSource(this.tasks);
   }
   
   ngOnInit(): void {
-    this.getBooks();
+    this.getTasks();
   }
 
   ngAfterViewInit(): void {
@@ -42,11 +42,11 @@ export class BooksComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = <MatSort>this.sort;
   }
 
-  getBooks(): void{
-    this.store.dispatch(new GetBooks());
+  getTasks(): void{
+    this.store.dispatch(new GetTasks());
     this.bookInfo$?.subscribe((returnData) => {
-      this.books = returnData;
-      this.dataSource.data = this.books;
+      this.tasks = returnData;
+      this.dataSource.data = this.tasks;
     })
   }
 
@@ -59,8 +59,8 @@ export class BooksComponent implements OnInit, AfterViewInit {
     }
   }
 
-  openBookDetail(id:number) {
-    const dialogRef = this.dialog.open(BookDetailComponent,
+  openTaskDetail(id:number) {
+    const dialogRef = this.dialog.open(TaskDetailComponent,
       {
         minWidth: "50vw",
         data: {

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BooksComponent } from './books.component';
-import { BookDetailComponent } from './book-detail/book-detail.component';
-import { SongCreateComponent } from './book-create/song-create.component';
-import { BooksRoutingModule } from './books-routing.module';
+import { TasksComponent } from './tasks.component';
+import { TaskDetailComponent } from './task-detail/task-detail.component';
+import { TaskCreateComponent } from './task-create/task-create.component';
+import { TasksRoutingModule } from './tasks-routing.module';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
@@ -17,13 +17,13 @@ import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
-    BooksComponent,
-    BookDetailComponent,
-    SongCreateComponent
+    TasksComponent,
+    TaskDetailComponent,
+    TaskCreateComponent
   ],
   imports: [
     CommonModule,
-    BooksRoutingModule,
+    TasksRoutingModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
@@ -36,4 +36,4 @@ import {MatChipsModule} from '@angular/material/chips';
     MatChipsModule
   ]
 })
-export class BooksModule { }
+export class TasksModule { }

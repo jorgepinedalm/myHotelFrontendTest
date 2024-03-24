@@ -1,30 +1,30 @@
-import { Book } from "../models/book";
+import { Task } from "../models/task";
 
 //Read
-export class GetBooks {
-    static readonly type = '[Books] Fetch';
+export class GetTasks {
+    static readonly type = '[Tasks] Fetch';
 }
 
 // Get a single book
-export class GetBookById {
-    static readonly type = '[Books] Get by ID';
+export class GetTaskById {
+    static readonly type = '[Tasks] Get by ID';
     constructor(public id: number) { }
 }
 
 //Create
-export class AddBooks {
-    static readonly type = '[Books] Add';
-    constructor(public payload: Book) { }
+export class AddTasks {
+    static readonly type = '[Tasks] Add';
+    constructor(public payload: Task) { }
 }
 
 //Update
-export class UpdateBooks {
-    static readonly type = '[Books] Update';
-    constructor(public payload: Book, public id: number, public i:number) { }
+export class UpdateTasks {
+    static readonly type = '[Tasks] Update';
+    constructor(public payload: Task, public id: number, public i:number) { }
 }
 
 //Delete
-export class DeleteBooks {
-    static readonly type = '[Books] Delete';
+export class DeleteTasks {
+    static readonly type = '[Tasks] Delete';
     constructor(public id: number) { }
 }
