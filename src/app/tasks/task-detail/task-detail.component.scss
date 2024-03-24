@@ -3,7 +3,69 @@
         font-size: 85%;
         font-weight: bold;
     }
+    &.field-with-icon{
+        display: flex;
+        align-items: center;
+        .field__icon{
+            height: 40px;
+            width: 40px;
+            font-size: 2.5rem;
+            margin-right: .25rem;
+        }
+        .field__info{
+            p{
+                margin-bottom: 0;
+            }
+        }
+    }
 }
-.book__cover{
-    
+.book__when{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.book__date{
+    position: relative;
+    background-image: url('../../../assets/images/calendar.png');
+    height: 120px;
+    width: 120px;
+    background-size: cover;
+    margin-bottom: 2.5rem;
+    .book__date__data{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 1.35rem;
+        text-align: center;
+        font-weight: bold;
+        .book__date__data__month{
+            margin-bottom: .75rem;
+            COLOR: #1A1A1A;
+        }
+        .book__date__data__day{
+            font-size: 2rem;
+            font-weight: bolder;
+            margin-bottom: .5rem;
+        }
+        .book__date__data__year{
+            font-size: 85%;
+            margin-bottom: .75rem;
+        }
+        .book__date__data__hours{
+            font-size: 85%;
+        }
+    }
+}
+@media only screen and (min-width: 992px) {
+    .dialog{
+        max-width: 60vw;
+    }
+    .field{
+        margin-bottom: 1rem;
+    }
+}
+@media only screen and (min-width: 1440px) {
+    .dialog{
+        max-width: 45vw;
+    }
 }

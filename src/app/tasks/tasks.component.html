@@ -1,7 +1,7 @@
 <div class="container mx-auto">
     <mat-form-field>
-        <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+        <mat-label>Filter by name or category</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Type task name or category" #input>
     </mat-form-field>
     <div class="mat-elevation-z8 rounded-md overflow-hidden mb-3">
         <table mat-table [dataSource]="dataSource" matSort>

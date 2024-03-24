@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { GetTaskById } from 'src/app/actions/app.actions';
+import { PriorityTask } from 'src/app/enums/priority-task';
 import { Task } from 'src/app/models/task';
 import { AppState } from 'src/app/states/app.state';
 
@@ -13,12 +14,14 @@ import { AppState } from 'src/app/states/app.state';
 })
 export class TaskDetailComponent {
   @Select(AppState.selectSelectedTask) selectedTask$?: Observable<Task>;
-
+  priorityTask: typeof PriorityTask;
+  
   constructor(
     private store: Store,
     @Inject(MAT_DIALOG_DATA) public data: any
   ){
     const idTask = data.dataKey;
     this.store.dispatch(new GetTaskById(idTask));
+    this.priorityTask = PriorityTask;
   }
 }

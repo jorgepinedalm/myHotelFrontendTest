@@ -70,7 +70,6 @@ export class TasksComponent implements OnInit, AfterViewInit {
   openTaskDetail(id:number) {
     const dialogRef = this.dialog.open(TaskDetailComponent,
       {
-        minWidth: "50vw",
         data: {
           dataKey: id
         }

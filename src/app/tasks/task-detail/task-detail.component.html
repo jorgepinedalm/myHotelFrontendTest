@@ -1,27 +1,76 @@
-<h2 mat-dialog-title>Task information</h2>
-<mat-dialog-content class="mat-typography">
-    <div *ngIf="selectedTask$ | async as selectedTask">
-        <div class="grid grid-cols-3 gap-4">
-            <div class="book__cover">
-            </div>
-            <div class="col-span-2">
-                <div class="field">
-                    <label>Title</label>
-                    <p>{{ selectedTask.title }}</p>
+<div class="dialog">
+   <h2 mat-dialog-title>Task information</h2>
+    <mat-dialog-content class="mat-typography">
+        <div *ngIf="selectedTask$ | async as selectedTask">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="book__when">
+                    <div class="book__date">
+                        <!-- <img src="assets\images\calendar.png" alt="Calendar"> -->
+                        <div class="book__date__data">
+                            <span class="book__date__data__month">{{ selectedTask.when | date: 'MMM' }}</span>
+                            <span class="book__date__data__day">{{ selectedTask.when | date: 'dd' }}</span>
+                            <span class="book__date__data__year">{{ selectedTask.when | date: 'yyyy' }}</span>
+                            <span class="book__date__data__year">{{ selectedTask.when | date: 'hh:mm a' }}</span>
+                        </div>
+                    </div>                
                 </div>
-                <div class="field">
-                    <label>Authors</label>
-                    <mat-chip *ngFor="let author of selectedTask.withWho">
-                        <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu"/>
-                        {{author}}
-                    </mat-chip>
+                <div class="col-span-2">
+                    <div class="field">
+                        <label>Title</label>
+                        <p>{{ selectedTask.title }}</p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+                        <div class="field field-with-icon">
+                            <ng-container [ngSwitch]="selectedTask.priority.id">
+                                <mat-icon *ngSwitchCase="priorityTask.High" class="field__icon text-red-500">keyboard_double_arrow_up</mat-icon>
+                                <mat-icon *ngSwitchCase="priorityTask.Medium" class="field__icon material-symbols-outlined text-yellow-500">equal</mat-icon>
+                                <mat-icon *ngSwitchCase="priorityTask.Low" class="field__icon text-green-500">keyboard_double_arrow_down</mat-icon>
+                                <mat-icon *ngSwitchDefault class="field__icon material-symbols-outlined text-yellow-500">equal</mat-icon>
+                            </ng-container>
+                            <div class="field__info">
+                                <label>Priority</label>
+                                <p>{{ selectedTask.priority.value }}</p>
+                            </div>
+                        </div>
+                        <div class="field field-with-icon col-span-3">
+                            <mat-icon class="field__icon material-symbols-outlined">location_on</mat-icon>
+                            <div class="field__info">
+                                <label>Where</label>
+                                <p>{{ selectedTask.where }}</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="field field-with-icon">
+                            <mat-icon class="field__icon material-symbols-outlined">category</mat-icon>
+                            <div class="field__info">
+                                <label>Category</label>
+                                <p>{{ selectedTask.category }}</p>
+                            </div>
+                        </div>
+                        <div class="field field-with-icon col-span-2" *ngIf="selectedTask.withWho && selectedTask.withWho.length > 0">
+                            <mat-icon class="field__icon material-symbols-outlined">group</mat-icon>
+                            <div class="field__info">
+                                <label>With Who?</label>
+                                <mat-chip-listbox aria-label="Dog selection">
+                                    <mat-chip *ngFor="let person of selectedTask.withWho">
+                                      <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu"/>
+                                      {{person}}
+                                    </mat-chip>
+                                </mat-chip-listbox>
+                            </div>
+                        </div>
+                        
+                    </div>
                 </div>
             </div>
+            
+            <p *ngIf="selectedTask.description">{{selectedTask.description}}</p>
         </div>
-        
-        <p *ngIf="selectedTask.description">{{selectedTask.description}}</p>
-    </div>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Close</button>
-</mat-dialog-actions>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Close</button>
+    </mat-dialog-actions>
+ 
+</div>

@@ -23,9 +23,9 @@ export class TasksService {
       {id: 3, value: "High"},
     ];
     for (let i = 1; i <= 10; i++) {
-      const task = {
+      const task:Task = {
         idTask: i,
-        title: `Tarea ${i}`,
+        title: `Task name Lorem ipsum dolor sit amet ${i}`,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.',
         category: categories[Math.floor(Math.random() * categories.length)],
         priority: priorities[(Math.floor(Math.random() * 3) + 1) - 1],
@@ -38,6 +38,15 @@ export class TasksService {
       if (task.when <= new Date()) {
         task.isDone = true;
       }
+
+      const persons = Math.floor(Math.random() * 3);
+      if(persons > 0){
+        task.withWho = [];
+        const mockNames = ["Jhon Doe", "Maria Carry", "Stephan Garrison", "George Harrison"]
+        for(let i = 0; i < persons; i++){
+          task.withWho.push(mockNames[(Math.floor(Math.random() * mockNames.length) + 1) - 1])
+        }
+      }
     
       this.tasks.push(task);
     }
@@ -46,7 +55,7 @@ export class TasksService {
 
   private generateRandomDate(): Date{
     const startDate = new Date(2024, 2, 1);
-    const endDate = new Date(2024, 2, 30);
+    const endDate = new Date(2024, 3, 30);
     const range = endDate.getTime() - startDate.getTime();
     const randomDate = new Date(startDate.getTime() + Math.random() * range);
     return randomDate;
