@@ -28,6 +28,10 @@ export class BooksService {
     return of(this.books);
   }
 
+  getBookById(id:number):Observable<Book | undefined>{
+    return of(this.books.find(book => book.idBook == id))
+  }
+
   addBooks(bookData:Book):Observable<Book>{
     return of(bookData);
   }

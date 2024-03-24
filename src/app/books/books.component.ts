@@ -7,6 +7,8 @@ import { Book } from '../models/book';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
+import { BookDetailComponent } from './book-detail/book-detail.component';
 
 @Component({
   selector: 'app-books',
@@ -22,9 +24,12 @@ export class BooksComponent implements OnInit, AfterViewInit {
 
   @Select(AppState.selectStateData) bookInfo$?: Observable<any>;
 
-  constructor(private store: Store){
+  constructor(
+    private store: Store,
+    public dialog: MatDialog
+  ){
     this.books = [];
-    this.displayedColumns = ['title', 'authors', 'publicationDate', 'rating'];
+    this.displayedColumns = ['title', 'authors', 'publicationDate', 'rating', 'actions'];
     this.dataSource = new MatTableDataSource(this.books);
   }
   
@@ -52,6 +57,19 @@ export class BooksComponent implements OnInit, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  openBookDetail(id:number) {
+    const dialogRef = this.dialog.open(BookDetailComponent,
+      {
+        data: {
+          dataKey: id
+        }
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }
