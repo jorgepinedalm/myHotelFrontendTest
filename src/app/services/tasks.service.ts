@@ -45,8 +45,8 @@ export class TasksService {
   }
 
   private generateRandomDate(): Date{
-    const startDate = new Date(2024, 0, 1);
-    const endDate = new Date(2024, 7, 30);
+    const startDate = new Date(2024, 2, 1);
+    const endDate = new Date(2024, 2, 30);
     const range = endDate.getTime() - startDate.getTime();
     const randomDate = new Date(startDate.getTime() + Math.random() * range);
     return randomDate;
