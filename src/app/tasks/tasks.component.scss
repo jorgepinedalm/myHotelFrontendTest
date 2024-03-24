@@ -4,3 +4,15 @@
 .mat-column-priority-id{
     text-align: center;
 }
+
+@media only screen and (min-width: 992px) {
+    .mat-column-when, .mat-column-priority-id {
+        width: 10rem;
+    }
+    .mat-column-category{
+        width: 12rem;
+    }
+    .mat-column-actions{
+        width: 16rem;
+    }
+}
