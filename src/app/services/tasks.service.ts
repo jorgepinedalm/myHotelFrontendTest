@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Task } from '../models/task';
+import { PriorityTask } from '../enums/priority-task';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,9 @@ export class TasksService {
     const abstract = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus purus et ante eleifend, ut mattis massa lacinia. Etiam consequat, tellus id finibus tincidunt, erat mauris aliquam libero, non viverra ligula nunc ac justo. Morbi mollis placerat.";
     const cover = "https://picsum.photos/150/200";
     for(let i = 0; i < 15; i++){
-      this.books.push({idTask: i+1, cover: cover, title: "My favorite book " + (i+1), abstract: abstract, authors: ["Jorge Pineda"], publicationDate: this.generateRandomDate(), rating: Math.random() * 5, visible: true});
+      this.books.push({idTask: i+1, title: "My favorite book " + (i+1), description: abstract, withWho: ["Jorge Pineda"], when: this.generateRandomDate(), isDone: false, priority: PriorityTask.Medium, where: "In my house", category: "Work"});
     }
-    this.books[10].authors.push("Pepito perez Parra");
+    this.books[10].withWho.push("Pepito perez Parra");
   }
 
   private generateRandomDate(): Date{

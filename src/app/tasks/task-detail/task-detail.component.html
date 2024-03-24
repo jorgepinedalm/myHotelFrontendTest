@@ -3,7 +3,6 @@
     <div *ngIf="selectedTask$ | async as selectedTask">
         <div class="grid grid-cols-3 gap-4">
             <div class="book__cover">
-                <img [src]="selectedTask.cover" alt="Task cover">
             </div>
             <div class="col-span-2">
                 <div class="field">
@@ -12,7 +11,7 @@
                 </div>
                 <div class="field">
                     <label>Authors</label>
-                    <mat-chip *ngFor="let author of selectedTask.authors">
+                    <mat-chip *ngFor="let author of selectedTask.withWho">
                         <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu"/>
                         {{author}}
                     </mat-chip>
@@ -20,9 +19,9 @@
             </div>
         </div>
         
-        <p *ngIf="selectedTask.abstract">{{selectedTask.abstract}}</p>
+        <p *ngIf="selectedTask.description">{{selectedTask.description}}</p>
     </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Cerrar</button>
+    <button mat-button mat-dialog-close>Close</button>
 </mat-dialog-actions>

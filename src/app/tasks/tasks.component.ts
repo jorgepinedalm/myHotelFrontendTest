@@ -29,7 +29,7 @@ export class TasksComponent implements OnInit, AfterViewInit {
     public dialog: MatDialog
   ){
     this.tasks = [];
-    this.displayedColumns = ['title', 'authors', 'publicationDate', 'rating', 'actions'];
+    this.displayedColumns = ['title', 'category', 'when', 'priority', 'actions'];
     this.dataSource = new MatTableDataSource(this.tasks);
   }
   
