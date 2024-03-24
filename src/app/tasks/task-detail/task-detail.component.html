@@ -65,8 +65,13 @@
                     </div>
                 </div>
             </div>
-            
             <p *ngIf="selectedTask.description">{{selectedTask.description}}</p>
+            <div class="text-right">
+                <mat-chip-option [color]="selectedTask.isDone? 'accent' : 'warn'" [selected]="selectedTask.isDone" disabled>
+                    <span *ngIf="!selectedTask.isDone">This task is pending</span>
+                    <span *ngIf="selectedTask.isDone">This task is done!</span>
+                </mat-chip-option>
+            </div>
         </div>
     </mat-dialog-content>
     <mat-dialog-actions align="end">

@@ -38,6 +38,18 @@
                 </ng-container>
               </td>
             </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="isDone">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> State </th>
+                <td mat-cell *matCellDef="let element"> 
+                    <mat-basic-chip>
+                        <mat-chip color="accent" *ngIf="element.isDone" disableRipple> Done </mat-chip>
+                        <mat-chip *ngIf="!element.isDone" disableRipple> Pending </mat-chip>
+                    </mat-basic-chip>
+                    
+                </td>
+            </ng-container>
     
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef> Actions </th>

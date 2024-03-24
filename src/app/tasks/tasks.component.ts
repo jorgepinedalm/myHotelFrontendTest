@@ -31,7 +31,7 @@ export class TasksComponent implements OnInit, AfterViewInit {
     public dialog: MatDialog
   ){
     this.tasks = [];
-    this.displayedColumns = ['title', 'category', 'when', 'priority.id', 'actions'];
+    this.displayedColumns = ['title', 'category', 'when', 'priority.id', 'isDone', 'actions'];
     this.dataSource = new MatTableDataSource(this.tasks);
     this.priorityTask = PriorityTask;
   }

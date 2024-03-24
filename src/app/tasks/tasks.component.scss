@@ -1,12 +1,15 @@
-::ng-deep .mat-column-priority-id .mat-sort-header-container{
-    justify-content: center;
-}
-.mat-column-priority-id{
+::ng-deep{
+    .mat-column-priority-id .mat-sort-header-container,
+    .mat-column-isDone .mat-sort-header-container{
+       justify-content: center;
+   }
+} 
+.mat-column-priority-id, .mat-column-isDone{
     text-align: center;
 }
 
 @media only screen and (min-width: 992px) {
-    .mat-column-when, .mat-column-priority-id {
+    .mat-column-when, .mat-column-priority-id, .mat-column-isDone {
         width: 10rem;
     }
     .mat-column-category{
