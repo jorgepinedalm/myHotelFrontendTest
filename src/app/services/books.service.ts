@@ -12,8 +12,16 @@ export class BooksService {
   constructor() { 
     this.books = [];
     for(let i = 0; i < 15; i++){
-      this.books.push({idBook: i+1, title: "My favorite book " + (i+1), abstract: "03:20", authors: ["Jorge Pineda"], rating: Math.random() * 5, visible: true});
+      this.books.push({idBook: i+1, title: "My favorite book " + (i+1), abstract: "03:20", authors: ["Jorge Pineda"], publicationDate: this.generateRandomDate(), rating: Math.random() * 5, visible: true});
     }
+  }
+
+  private generateRandomDate(): Date{
+    const startDate = new Date(2020, 0, 1);
+    const endDate = new Date();
+    var range = endDate.getTime() - startDate.getTime();
+    var randomDate = new Date(startDate.getTime() + Math.random() * range);
+    return randomDate;
   }
 
   fetchBooks(){

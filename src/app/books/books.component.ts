@@ -24,7 +24,7 @@ export class BooksComponent implements OnInit, AfterViewInit {
 
   constructor(private store: Store){
     this.books = [];
-    this.displayedColumns = ['title', 'authors', 'rating'];
+    this.displayedColumns = ['title', 'authors', 'publicationDate', 'rating'];
     this.dataSource = new MatTableDataSource(this.books);
   }
   

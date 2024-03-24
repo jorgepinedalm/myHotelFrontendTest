@@ -3,7 +3,7 @@ export interface Book {
     title: string;
     abstract?: string;
     authors: string[];
-    publicationDate?: string;
+    publicationDate?: Date;
     visible: boolean;
     rating: number;
 }
