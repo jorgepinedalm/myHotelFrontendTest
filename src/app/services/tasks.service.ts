@@ -8,44 +8,68 @@ import { PriorityTask } from '../enums/priority-task';
 })
 export class TasksService {
 
-  books:Task[];
+  tasks:Task[];
 
   constructor() { 
-    this.books = [];
-    const abstract = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus purus et ante eleifend, ut mattis massa lacinia. Etiam consequat, tellus id finibus tincidunt, erat mauris aliquam libero, non viverra ligula nunc ac justo. Morbi mollis placerat.";
-    const cover = "https://picsum.photos/150/200";
-    for(let i = 0; i < 15; i++){
-      this.books.push({idTask: i+1, title: "My favorite book " + (i+1), description: abstract, withWho: ["Jorge Pineda"], when: this.generateRandomDate(), isDone: false, priority: PriorityTask.Medium, where: "In my house", category: "Work"});
+    this.tasks = [];
+    this.mockData();
+  }
+
+  private mockData(): void{
+    const categories = ['Home', 'Work', 'Friends', 'Other'];
+    const priorities:any = [
+      {id: 1, value: "High"},
+      {id: 2, value: "Medium"},
+      {id: 3, value: "Low"},
+    ];
+    for (let i = 1; i <= 10; i++) {
+      const task = {
+        idTask: i,
+        title: `Tarea ${i}`,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.',
+        category: categories[Math.floor(Math.random() * categories.length)],
+        priority: priorities[Math.floor(Math.random() * 2)],
+        when: this.generateRandomDate(),
+        where: `Lugar ${i}`,
+        isDone: false
+      };
+    
+      // Verificar si la tarea está completada
+      if (task.when <= new Date()) {
+        task.isDone = true;
+      }
+    
+      this.tasks.push(task);
     }
-    this.books[10].withWho.push("Pepito perez Parra");
+
   }
 
   private generateRandomDate(): Date{
-    const startDate = new Date(2020, 0, 1);
-    const endDate = new Date();
-    var range = endDate.getTime() - startDate.getTime();
-    var randomDate = new Date(startDate.getTime() + Math.random() * range);
+    const startDate = new Date(2024, 0, 1);
+    const endDate = new Date(2024, 7, 30);
+    const range = endDate.getTime() - startDate.getTime();
+    const randomDate = new Date(startDate.getTime() + Math.random() * range);
     return randomDate;
   }
 
   fetchTasks(){
-    return of(this.books);
+    return of(this.tasks);
   }
 
   getTaskById(id:number):Observable<Task | undefined>{
-    return of(this.books.find(book => book.idTask == id))
+    return of(this.tasks.find(task => task.idTask == id))
   }
 
-  addTasks(bookData:Task):Observable<Task>{
-    return of(bookData);
+  addTasks(taskData:Task):Observable<Task>{
+    return of(taskData);
   }
 
   deleteTask(id:number){
-    return of(this.books.filter(book => book.idTask != id));
+    return of(this.tasks.filter(task => task.idTask != id));
   }
 
   updateTask(payload:Task,id:number){
-    let foundTask = this.books.find(book => book.idTask == id);
+    let foundTask = this.tasks.find(task => task.idTask == id);
     if(foundTask){
       foundTask = {...foundTask, ...payload};
     }

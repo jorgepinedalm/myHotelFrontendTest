@@ -29,7 +29,7 @@ export class TasksComponent implements OnInit, AfterViewInit {
     public dialog: MatDialog
   ){
     this.tasks = [];
-    this.displayedColumns = ['title', 'category', 'when', 'priority', 'actions'];
+    this.displayedColumns = ['title', 'category', 'when', 'priority.value', 'actions'];
     this.dataSource = new MatTableDataSource(this.tasks);
   }
   
@@ -39,8 +39,13 @@ export class TasksComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = <MatPaginator>this.paginator;
+    this.dataSource.sortingDataAccessor = (obj, property) => this.getProperty(obj, property);
     this.dataSource.sort = <MatSort>this.sort;
   }
+
+  getProperty = (obj:any, path:any) => (
+    path.split('.').reduce((o:any, p:any) => o && o[p], obj)
+  )
 
   getTasks(): void{
     this.store.dispatch(new GetTasks());

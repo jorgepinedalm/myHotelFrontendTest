@@ -25,9 +25,9 @@
             </ng-container>
             
             <!-- Symbol Column -->
-            <ng-container matColumnDef="priority">
+            <ng-container matColumnDef="priority.value">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Priority </th>
-              <td mat-cell *matCellDef="let element"> {{element.priority}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.priority?.value}} </td>
             </ng-container>
     
             <ng-container matColumnDef="actions">

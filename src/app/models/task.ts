@@ -1,10 +1,10 @@
-import { PriorityTask } from "../enums/priority-task";
+import { PriorityTask } from "./priority-task.model";
 
 export interface Task {
     idTask: number;
     title: string;
     description?: string;
-    withWho: string[];
+    withWho?: string[];
     category:string;
     priority:PriorityTask;
     when: Date;
