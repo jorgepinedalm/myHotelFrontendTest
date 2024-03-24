@@ -12,13 +12,13 @@
             <mat-form-field class="w-full">
                 <mat-label>Category</mat-label>
                 <mat-select formControlName="category">
-                  <mat-option value="option">Option</mat-option>
+                  <mat-option [value]="category.value" *ngFor="let category of categories$ | async">{{category.value}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field class="w-full">
                 <mat-label>Priority</mat-label>
                 <mat-select formControlName="priority">
-                  <mat-option value="option">Option</mat-option>
+                  <mat-option [value]="priority.value" *ngFor="let priority of priorities$ | async">{{priority.value}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>

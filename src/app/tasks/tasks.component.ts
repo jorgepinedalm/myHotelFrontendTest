@@ -25,7 +25,7 @@ export class TasksComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort?: MatSort;
   priorityTask: typeof PriorityTask;
 
-  @Select(AppState.selectStateData) bookInfo$?: Observable<any>;
+  @Select(AppState.selectStateData) bookInfo$?: Observable<Task[]>;
 
   constructor(
     private store: Store,
