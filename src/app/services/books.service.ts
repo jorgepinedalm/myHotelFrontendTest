@@ -11,8 +11,10 @@ export class BooksService {
 
   constructor() { 
     this.books = [];
+    const abstract = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus purus et ante eleifend, ut mattis massa lacinia. Etiam consequat, tellus id finibus tincidunt, erat mauris aliquam libero, non viverra ligula nunc ac justo. Morbi mollis placerat.";
+    const cover = "https://picsum.photos/150/200";
     for(let i = 0; i < 15; i++){
-      this.books.push({idBook: i+1, title: "My favorite book " + (i+1), abstract: "03:20", authors: ["Jorge Pineda"], publicationDate: this.generateRandomDate(), rating: Math.random() * 5, visible: true});
+      this.books.push({idBook: i+1, cover: cover, title: "My favorite book " + (i+1), abstract: abstract, authors: ["Jorge Pineda"], publicationDate: this.generateRandomDate(), rating: Math.random() * 5, visible: true});
     }
   }
 

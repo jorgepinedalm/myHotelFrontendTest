@@ -62,6 +62,7 @@ export class BooksComponent implements OnInit, AfterViewInit {
   openBookDetail(id:number) {
     const dialogRef = this.dialog.open(BookDetailComponent,
       {
+        minWidth: "50vw",
         data: {
           dataKey: id
         }

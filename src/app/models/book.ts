@@ -1,5 +1,6 @@
 export interface Book {
     idBook: number;
+    cover?:String;
     title: string;
     abstract?: string;
     authors: string[];

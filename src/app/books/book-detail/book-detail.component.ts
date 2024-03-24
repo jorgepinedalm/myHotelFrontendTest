@@ -12,7 +12,6 @@ import { AppState } from 'src/app/states/app.state';
   styleUrls: ['./book-detail.component.scss']
 })
 export class BookDetailComponent {
-  bookDetail?: Book;
   @Select(AppState.selectSelectedBook) selectedBook$?: Observable<Book>;
 
   constructor(

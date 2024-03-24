@@ -1,8 +1,26 @@
-<h2 mat-dialog-title>Detail of book</h2>
+<h2 mat-dialog-title>Book information</h2>
 <mat-dialog-content class="mat-typography">
     <div *ngIf="selectedBook$ | async as selectedBook">
-        <h2>{{ selectedBook.title }}</h2>
-        <!-- Otros detalles del libro -->
+        <div class="grid grid-cols-3 gap-4">
+            <div class="book__cover">
+                <img [src]="selectedBook.cover" alt="Book cover">
+            </div>
+            <div class="col-span-2">
+                <div class="field">
+                    <label>Title</label>
+                    <p>{{ selectedBook.title }}</p>
+                </div>
+                <div class="field">
+                    <label>Authors</label>
+                    <mat-chip>
+                        <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu"/>
+                        Dog one
+                    </mat-chip>
+                </div>
+            </div>
+        </div>
+        
+        <p *ngIf="selectedBook.abstract">{{selectedBook.abstract}}</p>
     </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
