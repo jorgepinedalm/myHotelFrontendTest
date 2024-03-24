@@ -2,3 +2,14 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@media only screen and (min-width: 992px) {
+    .dialog{
+        min-width: 40vw;
+        max-width: 60vw;
+    }
+}
+@media only screen and (min-width: 1440px) {
+    .dialog{
+        max-width: 45vw;
+    }
+}

@@ -47,7 +47,6 @@
                         <mat-chip color="accent" *ngIf="element.isDone" disableRipple> Done </mat-chip>
                         <mat-chip *ngIf="!element.isDone" disableRipple> Pending </mat-chip>
                     </mat-basic-chip>
-                    
                 </td>
             </ng-container>
     
@@ -65,10 +64,10 @@
                     <button 
                     mat-icon-button 
                     class="example-icon" 
-                    matTooltip="Edit book" 
-                    matTooltipPosition="left" 
-                    aria-label="Edit book">
-                        <mat-icon>edit</mat-icon>
+                    matTooltip="Edit book"
+                    aria-label="Edit book"
+                    (click)="openTaskEdit(element.idTask)">
+                        <mat-icon class="material-symbols-outlined">edit</mat-icon>
                     </button>
                 </td>
             </ng-container>

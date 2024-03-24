@@ -15,12 +15,14 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatChipsModule} from '@angular/material/chips';
 import { SharedModule } from '../shared/shared.module';
+import { TaskEditComponent } from './task-edit/task-edit.component';
 
 @NgModule({
   declarations: [
     TasksComponent,
     TaskDetailComponent,
-    TaskCreateComponent
+    TaskCreateComponent,
+    TaskEditComponent
   ],
   imports: [
     CommonModule,

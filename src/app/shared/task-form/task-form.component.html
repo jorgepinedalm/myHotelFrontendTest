@@ -1,0 +1,37 @@
+<div class="task-form">
+    <form [formGroup]="form">
+        <mat-form-field class="w-full">
+            <mat-label>Title</mat-label>
+            <input matInput formControlName="title" placeholder="Title of the task">
+        </mat-form-field> 
+        <mat-form-field class="w-full">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description" placeholder="What will you do?"></textarea>
+        </mat-form-field>
+        <div class="grid sm:grid-cols-2 gap-4">
+            <mat-form-field class="w-full">
+                <mat-label>Category</mat-label>
+                <mat-select formControlName="category">
+                  <mat-option value="option">Option</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="w-full">
+                <mat-label>Priority</mat-label>
+                <mat-select formControlName="priority">
+                  <mat-option value="option">Option</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <mat-form-field class="w-full">
+            <mat-label>Where would you do this task?</mat-label>
+            <input matInput formControlName="where" placeholder="Type your answer">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>When will you do it?</mat-label>
+            <input matInput formControlName="when" [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </form>
+</div>

@@ -10,6 +10,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { PriorityTask } from '../enums/priority-task';
+import { TaskEditComponent } from './task-edit/task-edit.component';
 
 @Component({
   selector: 'app-tasks',
@@ -69,6 +70,19 @@ export class TasksComponent implements OnInit, AfterViewInit {
 
   openTaskDetail(id:number) {
     const dialogRef = this.dialog.open(TaskDetailComponent,
+      {
+        data: {
+          dataKey: id
+        }
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openTaskEdit(id:number) {
+    const dialogRef = this.dialog.open(TaskEditComponent,
       {
         data: {
           dataKey: id
