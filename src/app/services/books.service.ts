@@ -16,6 +16,7 @@ export class BooksService {
     for(let i = 0; i < 15; i++){
       this.books.push({idBook: i+1, cover: cover, title: "My favorite book " + (i+1), abstract: abstract, authors: ["Jorge Pineda"], publicationDate: this.generateRandomDate(), rating: Math.random() * 5, visible: true});
     }
+    this.books[10].authors.push("Pepito perez Parra");
   }
 
   private generateRandomDate(): Date{
