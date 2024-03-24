@@ -18,9 +18,9 @@ export class TasksService {
   private mockData(): void{
     const categories = ['Home', 'Work', 'Friends', 'Other'];
     const priorities:any = [
-      {id: 1, value: "High"},
+      {id: 1, value: "Low"},
       {id: 2, value: "Medium"},
-      {id: 3, value: "Low"},
+      {id: 3, value: "High"},
     ];
     for (let i = 1; i <= 10; i++) {
       const task = {
@@ -28,7 +28,7 @@ export class TasksService {
         title: `Tarea ${i}`,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.',
         category: categories[Math.floor(Math.random() * categories.length)],
-        priority: priorities[Math.floor(Math.random() * 2)],
+        priority: priorities[(Math.floor(Math.random() * 3) + 1) - 1],
         when: this.generateRandomDate(),
         where: `Lugar ${i}`,
         isDone: false

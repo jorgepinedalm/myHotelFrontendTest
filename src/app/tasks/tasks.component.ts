@@ -9,6 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
+import { PriorityTask } from '../enums/priority-task';
 
 @Component({
   selector: 'app-tasks',
@@ -21,6 +22,7 @@ export class TasksComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<Task>;
   @ViewChild(MatPaginator) paginator?: MatPaginator;
   @ViewChild(MatSort) sort?: MatSort;
+  priorityTask: typeof PriorityTask;
 
   @Select(AppState.selectStateData) bookInfo$?: Observable<any>;
 
@@ -29,8 +31,9 @@ export class TasksComponent implements OnInit, AfterViewInit {
     public dialog: MatDialog
   ){
     this.tasks = [];
-    this.displayedColumns = ['title', 'category', 'when', 'priority.value', 'actions'];
+    this.displayedColumns = ['title', 'category', 'when', 'priority.id', 'actions'];
     this.dataSource = new MatTableDataSource(this.tasks);
+    this.priorityTask = PriorityTask;
   }
   
   ngOnInit(): void {

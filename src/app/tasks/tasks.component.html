@@ -25,9 +25,16 @@
             </ng-container>
             
             <!-- Symbol Column -->
-            <ng-container matColumnDef="priority.value">
+            <ng-container matColumnDef="priority.id">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Priority </th>
-              <td mat-cell *matCellDef="let element"> {{element.priority?.value}} </td>
+              <td mat-cell *matCellDef="let element">
+                <ng-container [ngSwitch]="element.priority?.id">
+                    <mat-icon *ngSwitchCase="priorityTask.High" class="text-red-500" [matTooltip]="'Priority ' + element.priority?.value">keyboard_double_arrow_up</mat-icon>
+                    <mat-icon *ngSwitchCase="priorityTask.Medium" class="material-symbols-outlined text-yellow-500" [matTooltip]="'Priority ' + element.priority?.value">equal</mat-icon>
+                    <mat-icon *ngSwitchCase="priorityTask.Low" class="text-green-500" [matTooltip]="'Priority ' + element.priority?.value">keyboard_double_arrow_down</mat-icon>
+                    <mat-icon *ngSwitchDefault class="material-symbols-outlined text-yellow-500">equal</mat-icon>
+                </ng-container>
+              </td>
             </ng-container>
     
             <ng-container matColumnDef="actions">
