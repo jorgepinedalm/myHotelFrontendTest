@@ -5,8 +5,9 @@ import { Observable } from 'rxjs';
 import { GetCategories, GetPriorities } from 'src/app/actions/data.actions';
 import { DataList } from 'src/app/models/data-list.model';
 import { DataState } from 'src/app/states/data.state';
-import { Task } from "../../models/task";
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { FormValues } from 'src/app/models/form-values.model';
+import { MatChipEditedEvent, MatChipInputEvent } from '@angular/material/chips';
 
 @Component({
   selector: 'app-task-form',
@@ -20,16 +21,21 @@ export class TaskFormComponent implements OnInit, OnChanges {
   formValuesChanged = new EventEmitter<FormValues>();
   form: FormGroup;
   isEditing:boolean;
+  persons:string[];
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
   @Select(DataState.selectStateCategories) categories$?: Observable<DataList[]>;
   @Select(DataState.selectStatePriorities) priorities$?: Observable<DataList[]>;
   private priorities:DataList[];
-
+  
+  
   constructor(
     private fb: FormBuilder,
     private store: Store
   ){
     this.form = this.createForm();
     this.priorities = [];
+    this.persons = [];
     this.isEditing = false;
   }
 
@@ -46,6 +52,7 @@ export class TaskFormComponent implements OnInit, OnChanges {
     if(changes['initialState']){
       const initialState = changes['initialState']['currentValue'];
       this.form.patchValue({...initialState, priority: initialState.priority.value});
+      this.persons = initialState.withWho ?? [];
       this.isEditing = true;
     }
   }
@@ -64,8 +71,60 @@ export class TaskFormComponent implements OnInit, OnChanges {
 
   subscribeFormChanges():void{
     this.form.valueChanges.subscribe((val) => {
-      val.priority = this.priorities.find(priority => priority.value == val.priority);
-      this.formValuesChanged.emit({task:val ,isValidForm: this.form.valid});
+      this.emitDataChanges(val);
     });
+  }
+
+  emitDataChanges(dataRawForm:any):void{
+    dataRawForm.priority = this.priorities.find(priority => priority.value == dataRawForm.priority);
+    this.formValuesChanged.emit({task:dataRawForm ,isValidForm: this.form.valid});
+  }
+
+  //add person in field with who
+  add(event: any): void {
+    const value = (event.value || '').trim();
+
+    // Add our fruit
+    if (value) {
+      this.persons.push(value);
+      this.setPersonsInFormValue();
+    }
+
+    // Clear the input value
+    event.chipInput!.clear();
+  }
+
+  //remove person in field with who
+  remove(person: string): void {
+    const index = this.persons.indexOf(person);
+
+    if (index >= 0) {
+      this.persons.splice(index, 1);
+      this.setPersonsInFormValue();
+    }
+  }
+
+  //edit person in field with who
+  edit(person: string, event: any) {
+    const value = event.value.trim();
+
+    // Remove fruit if it no longer has a name
+    if (!value) {
+      this.remove(person);
+      return;
+    }
+
+    // Edit existing fruit
+    const index = this.persons.indexOf(person);
+    if (index >= 0) {
+      this.persons[index] = value;
+      this.setPersonsInFormValue();
+    }
+  }
+
+  setPersonsInFormValue():void{
+    const dataForm = this.form.getRawValue();
+    dataForm.withWho = this.persons;
+    this.emitDataChanges(dataForm);
   }
 }

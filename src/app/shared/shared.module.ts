@@ -9,7 +9,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-
+import {MatChipsModule} from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,10 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatSelectModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatChipsModule,
+    MatIconModule,
+    MatTooltipModule
   ],
   exports: [
     HowLongAgoWasTheDatePipe,

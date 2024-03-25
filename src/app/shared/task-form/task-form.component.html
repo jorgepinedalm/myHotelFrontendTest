@@ -45,6 +45,26 @@
                 
             </div>
         </div>
-        
+        <mat-form-field class="example-chip-list" appearance="fill">
+            <mat-label>Who would you do this with? <small><em>(Optional)</em></small></mat-label>
+            <mat-chip-grid #chipGrid aria-label="Enter persons">
+              <mat-chip-row *ngFor="let person of persons"
+                            (removed)="remove(person)"
+                            [editable]="true"
+                            (edited)="edit(person, $event)"
+                            [aria-description]="'press enter to edit ' + person">
+                {{person}}
+                <button matChipRemove [attr.aria-label]="'remove ' + person">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip-row>
+              <input placeholder="Type a name..."
+                     [matChipInputFor]="chipGrid"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="addOnBlur"
+                     (matChipInputTokenEnd)="add($event)"/>
+            </mat-chip-grid>
+            <mat-hint>Enter a name and press the enter or comma key to add it. To modify a name, click on it and press the enter key.</mat-hint>
+        </mat-form-field>
     </form>
 </div>
