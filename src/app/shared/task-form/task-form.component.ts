@@ -61,7 +61,6 @@ export class TaskFormComponent implements OnInit, OnChanges {
   subscribeFormChanges():void{
     this.form.valueChanges.subscribe((val) => {
       val.priority = this.priorities.find(priority => priority.value == val.priority);
-      console.log("formValid: ", this.form.valid);
       this.formValuesChanged.emit({task:val ,isValidForm: this.form.valid});
     });
   }

@@ -42,7 +42,7 @@ export class AppState {
 
             ctx.setState({
                 ...state,
-                tasks: returnData //here the data coming from the API will get assigned to the users variable inside the appstate
+                tasks: returnData
             })
         }))
     }
@@ -53,7 +53,6 @@ export class AppState {
             const state = ctx.getState();
             const task = state.tasks.find(task => task.idTask === id);
             if (task) {
-                // Actualiza el estado solo si se encuentra el libro con el ID dado
                 ctx.patchState({
                     ...state,
                     selectedTask: task
@@ -92,9 +91,7 @@ export class AppState {
     deleteDataFromState(ctx: StateContext<TaskStateModel>, { id }: DeleteTasks) {
         return this.taskService.deleteTask(id).pipe(tap(returnData => {
             const state=ctx.getState();
-            console.log("The is is",id)
-            //Here we will create a new Array called filteredArray which won't contain the given id and set it equal to state.todo
-            const filteredArray=state.tasks.filter((contents:any)=>contents.id!==id);
+            const filteredArray=state.tasks.filter((task:Task)=>task.idTask!==id);
 
             ctx.setState({
                 ...state,

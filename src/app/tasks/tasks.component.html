@@ -65,18 +65,26 @@
                     <button 
                     mat-icon-button 
                     class="example-icon" 
-                    matTooltip="See detail of book"
-                    aria-label="See detail of book"
+                    matTooltip="See detail of task"
+                    aria-label="See detail of task"
                     (click)="openTaskDetail(element.idTask)">
                         <mat-icon class="material-symbols-outlined">info</mat-icon>
                     </button>
                     <button 
                     mat-icon-button 
                     class="example-icon" 
-                    matTooltip="Edit book"
-                    aria-label="Edit book"
+                    matTooltip="Edit task"
+                    aria-label="Edit task"
                     (click)="openTaskEdit(element.idTask)">
                         <mat-icon class="material-symbols-outlined">edit</mat-icon>
+                    </button>
+                    <button 
+                    mat-icon-button 
+                    class="example-icon" 
+                    matTooltip="Remove task"
+                    aria-label="Remove task"
+                    (click)="openRemoveTask(element)">
+                        <mat-icon class="material-symbols-outlined">delete</mat-icon>
                     </button>
                 </td>
             </ng-container>

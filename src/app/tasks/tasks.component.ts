@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { AppState } from '../states/app.state';
-import { GetTasks } from '../actions/app.actions';
+import { DeleteTasks, GetTasks } from '../actions/app.actions';
 import { Task } from '../models/task';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -12,6 +12,7 @@ import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { PriorityTask } from '../enums/priority-task';
 import { TaskEditComponent } from './task-edit/task-edit.component';
 import { TaskCreateComponent } from './task-create/task-create.component';
+import { TaskDeleteComponent } from './task-delete/task-delete.component';
 
 @Component({
   selector: 'app-tasks',
@@ -101,6 +102,21 @@ export class TasksComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  openRemoveTask(task:Task):void{
+    const dialogRef = this.dialog.open(TaskDeleteComponent,
+      {
+        data: {
+          dataKey: task.idTask,
+          titleTask: task.title
+        }
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+    
   }
 
 }

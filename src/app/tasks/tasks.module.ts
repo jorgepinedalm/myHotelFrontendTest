@@ -16,13 +16,15 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatChipsModule} from '@angular/material/chips';
 import { SharedModule } from '../shared/shared.module';
 import { TaskEditComponent } from './task-edit/task-edit.component';
+import { TaskDeleteComponent } from './task-delete/task-delete.component';
 
 @NgModule({
   declarations: [
     TasksComponent,
     TaskDetailComponent,
     TaskCreateComponent,
-    TaskEditComponent
+    TaskEditComponent,
+    TaskDeleteComponent
   ],
   imports: [
     CommonModule,
