@@ -1,4 +1,4 @@
-# My Task
+# My Tasks
 
 Este proyecto contiene los elementos solicitados en la prueba técnica para myHotel presentado por Jorge Pineda Montagut. Para esta, se escogió como modelo o tematica a seguir "tareas a realizar" donde se tuvieron en cuenta los campos:
 
@@ -19,6 +19,11 @@ Al correr la aplicación, realizada con la versión 15.2.10 de Angular, con el c
 El listado presentado puede ser filtrado a través del campo de texto ubicado en la parte superior de la ventana. Junto a esto, las columnas presentadas en el listado se pueden ordenar al presionar sobre las cabeceras de cada columna, a excepción de la coluna Actions.
 
 
+Para las acciones de crear y eliminar se creó un formulario para el ingreso de la información sobre las tareas y para la acción de Eliminar se agregó un mensaje de confirmación.
+
+
+
+
 El formulario de registro de tareas implementa Reactive forms.
 
 
@@ -32,6 +37,7 @@ La aplicación hace uso del paquete NGXS para el manejo de estado incluyendo ele
 
 
 Para los componentes visuales se usó Material angular y se utilizaron algunas utilidades CSS de Tailwind.
+
 
 Quedo atento por si se requiere aclaración o se tiene alguna pregunta sobre la implementación de algo relacionado en la prueba
 

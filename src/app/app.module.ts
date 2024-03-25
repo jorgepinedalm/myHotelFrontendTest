@@ -12,6 +12,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataState } from './states/data.state';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { DataState } from './states/data.state';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
+    MatTooltipModule,
     NgxsModule.forRoot([AppState, DataState]), NgxsLoggerPluginModule.forRoot()
   ],
   providers: [],

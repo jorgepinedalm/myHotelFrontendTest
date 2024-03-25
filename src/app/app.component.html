@@ -1,17 +1,18 @@
 <mat-toolbar>
   <span>My tasks</span>
   <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+  <a role="button" mat-icon-button  href="https://github.com/jorgepinedalm/myHotelFrontendTest" target="_blank" matTooltip="Go to repo" class="example-icon favorite-icon" aria-label="Icon description to access repo">
     <mat-icon class="material-symbols-outlined">description</mat-icon>
-  </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>share</mat-icon>
-  </button>
+  </a>
+  <a role="button" mat-icon-button href="https://www.linkedin.com/in/jorgepinedam/" target="_blank" matTooltip="Go to my LinkedIn" class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon class="material-symbols-outlined">person</mat-icon>
+  </a>
 </mat-toolbar>
 <div class="py-4">
   <router-outlet></router-outlet>
 </div>
 <div class="text-center text-stone-500">
+  <em>Please, visit the <a class="text-blue-600" href="https://github.com/jorgepinedalm/myHotelFrontendTest/blob/main/README.md" target="_blank">README</a> file in my repo to check the code.</em><br>
   <em>By Jorge Pineda Montagut</em>
 </div>
 
