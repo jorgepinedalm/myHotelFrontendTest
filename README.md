@@ -33,3 +33,5 @@ La aplicación hace uso del paquete NGXS para el manejo de estado incluyendo ele
 
 Para los componentes visuales se usó Material angular y se utilizaron algunas utilidades CSS de Tailwind.
 
+Quedo atento por si se requiere aclaración o se tiene alguna pregunta sobre la implementación de algo relacionado en la prueba
+
