@@ -17,8 +17,9 @@ export class TaskFormComponent implements OnInit, OnChanges {
   @Input()
   public initialState?: { [key: string]: any };
   @Output()
-  public formValuesChanged = new EventEmitter<FormValues>();
-  public form: FormGroup;
+  formValuesChanged = new EventEmitter<FormValues>();
+  form: FormGroup;
+  isEditing:boolean;
   @Select(DataState.selectStateCategories) categories$?: Observable<DataList[]>;
   @Select(DataState.selectStatePriorities) priorities$?: Observable<DataList[]>;
   private priorities:DataList[];
@@ -29,6 +30,7 @@ export class TaskFormComponent implements OnInit, OnChanges {
   ){
     this.form = this.createForm();
     this.priorities = [];
+    this.isEditing = false;
   }
 
   ngOnInit(): void {
@@ -44,6 +46,7 @@ export class TaskFormComponent implements OnInit, OnChanges {
     if(changes['initialState']){
       const initialState = changes['initialState']['currentValue'];
       this.form.patchValue({...initialState, priority: initialState.priority.value});
+      this.isEditing = true;
     }
   }
 
@@ -54,7 +57,8 @@ export class TaskFormComponent implements OnInit, OnChanges {
       category: new FormControl('', [Validators.required]),
       priority: new FormControl('', [Validators.required]),
       where: new FormControl('', [Validators.required, Validators.maxLength(255)]),
-      when: new FormControl('', [Validators.required]),
+      when: new FormControl(new Date(), [Validators.required]),
+      isDone: new FormControl('')
     });
   }
 

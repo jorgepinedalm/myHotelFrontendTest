@@ -7,8 +7,18 @@
 .mat-column-priority-id, .mat-column-isDone{
     text-align: center;
 }
-
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1024px) {
+    .mat-column-when, .mat-column-priority-id, .mat-column-isDone {
+        width: 8rem;
+    }
+    .mat-column-category{
+        width: 9rem;
+    }
+    .mat-column-actions{
+        width: 12rem;
+    }
+}
+@media only screen and (min-width: 1440px) {
     .mat-column-when, .mat-column-priority-id, .mat-column-isDone {
         width: 10rem;
     }

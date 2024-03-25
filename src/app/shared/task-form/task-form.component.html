@@ -26,12 +26,25 @@
             <mat-label>Where would you do this task?</mat-label>
             <input matInput formControlName="where" placeholder="Type your answer">
         </mat-form-field>
-        <mat-form-field>
-            <mat-label>When will you do it?</mat-label>
-            <input matInput formControlName="when" [matDatepicker]="picker">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
+        <div class="grid sm:grid-cols-2 gap-4">
+            <mat-form-field>
+                <mat-label>When will you do it?</mat-label>
+                <input matInput formControlName="when" [matDatepicker]="picker">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <div *ngIf="isEditing">
+                <mat-label class="text-xs">State</mat-label>
+                <div>
+                    <mat-button-toggle-group appearance="legacy" formControlName="isDone" aria-label="Font Style">
+                        <mat-button-toggle [value]="true">Done</mat-button-toggle>
+                        <mat-button-toggle [value]="false">Pending</mat-button-toggle>
+                    </mat-button-toggle-group>
+                </div>
+                
+            </div>
+        </div>
+        
     </form>
 </div>
