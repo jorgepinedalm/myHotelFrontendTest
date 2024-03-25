@@ -18,6 +18,9 @@ import { SharedModule } from '../shared/shared.module';
 import { TaskEditComponent } from './task-edit/task-edit.component';
 import { TaskDeleteComponent } from './task-delete/task-delete.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSelectModule } from '@angular/material/select';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatTooltipModule,
     MatChipsModule,
     MatSnackBarModule,
+    MatSelectModule,
+    MatExpansionModule,
+    MatBadgeModule,
     SharedModule
   ]
 })

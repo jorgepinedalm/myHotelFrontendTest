@@ -1,16 +1,37 @@
 <div class="container mx-auto">
-    <div class="grid grid-cols-4 gap-4">
-        <mat-form-field class="w-full col-span-3">
-            <mat-label>Filter by name or category</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Type task name or category" #input>
+    <div class="grid grid-cols-6 gap-4">
+        <mat-form-field class="w-full col-span-4">
+            <mat-label>Filter by name</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Type task name or part of its description" #input>
         </mat-form-field>
-        <div>
+        <div class="col-span-2 gap-4 flex justify-between">
+            <button mat-icon-button matTooltip="Show filters" (click)="toggleFilterPanel = !toggleFilterPanel" aria-label="Example icon-button with a heart icon">
+                <mat-icon class="material-symbols-outlined" matBadge="*" [matBadgeHidden]="hideFilterBadge" matBadgeSize="small" matBadgeColor="warn">filter_alt</mat-icon>
+            </button>
             <button mat-fab extended color="accent" class="w-full" (click)="openCreateEdit()">
                 <mat-icon class="material-symbols-outlined">add</mat-icon>
                 Add task
             </button>
         </div>
     </div>
+     
+    <mat-expansion-panel [expanded]="toggleFilterPanel" (opened)="toggleFilterPanel = true"
+    (closed)="toggleFilterPanel = false" hideToggle>
+        <div class="grid sm:grid-cols-4 gap-4">
+            <mat-form-field appearance="fill" *ngFor="let empfilter of empFilters">
+                <mat-label>{{ empfilter.name }}</mat-label>
+                <mat-select
+                  [(value)]="empfilter.defaultValue"
+                  (selectionChange)="applyEmpFilter($event, empfilter)"
+                >
+                  <mat-option *ngFor="let option of empfilter.options" [value]="option">
+                    {{ option }}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </mat-expansion-panel>
+    
     
     <div class="mat-elevation-z8 rounded-md overflow-hidden mb-3">
         <table mat-table [dataSource]="dataSource" matSort>

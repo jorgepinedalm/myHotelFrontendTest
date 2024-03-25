@@ -77,6 +77,7 @@ export class TaskFormComponent implements OnInit, OnChanges {
 
   emitDataChanges(dataRawForm:any):void{
     dataRawForm.priority = this.priorities.find(priority => priority.value == dataRawForm.priority);
+    dataRawForm.withWho = this.persons;
     this.formValuesChanged.emit({task:dataRawForm ,isValidForm: this.form.valid});
   }
 
@@ -124,7 +125,6 @@ export class TaskFormComponent implements OnInit, OnChanges {
 
   setPersonsInFormValue():void{
     const dataForm = this.form.getRawValue();
-    dataForm.withWho = this.persons;
     this.emitDataChanges(dataForm);
   }
 }

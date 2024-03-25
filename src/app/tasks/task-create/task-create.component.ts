@@ -28,9 +28,10 @@ export class TaskCreateComponent {
   }
 
   createTask(): void {
-    if(this.isValidForm){
+    if(this.isValidForm && this.dataForm){
       this.dialogRef.close(true);
-      this.store.dispatch(new AddTasks(this.dataForm as Task));
+      this.dataForm.isDone = false;
+      this.store.dispatch(new AddTasks(this.dataForm));
     }
     
   }

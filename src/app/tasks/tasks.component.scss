@@ -3,10 +3,18 @@
     .mat-column-isDone .mat-sort-header-container{
        justify-content: center;
    }
+   .mat-expansion-panel-body {
+        padding: 1rem!important;
+        padding-bottom: 0!important;
+    }
+    .mat-expansion-panel{
+        margin-bottom: 1rem!important;
+    }
 } 
 .mat-column-priority-id, .mat-column-isDone{
     text-align: center;
 }
+
 @media only screen and (min-width: 1024px) {
     .mat-column-when, .mat-column-priority-id, .mat-column-isDone {
         width: 8rem;

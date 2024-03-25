@@ -55,10 +55,8 @@
                             <div class="field__info">
                                 <label>State</label>
                                 <div>
-                                    <mat-chip-option [color]="selectedTask.isDone? 'accent' : 'warn'" [selected]="selectedTask.isDone" disabled>
-                                        <span *ngIf="!selectedTask.isDone">This task is pending</span>
-                                        <span *ngIf="selectedTask.isDone">This task is done!</span>
-                                    </mat-chip-option>
+                                    <span *ngIf="!selectedTask.isDone">This task is pending</span>
+                                        <span *ngIf="selectedTask.isDone">This task is done</span>
                                 </div>
                                 
                             </div>
