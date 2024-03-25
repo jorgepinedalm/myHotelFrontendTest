@@ -1,6 +1,6 @@
 # My Task
 
-Este proyecto contiene los elementos solicitados en la prueba técnica para myHotel presentado por Jorge Pineda Montagut. Para esta, se escogió como modelo a seguir "tareas a realizar" donde se tuvieron en cuenta los campos:
+Este proyecto contiene los elementos solicitados en la prueba técnica para myHotel presentado por Jorge Pineda Montagut. Para esta, se escogió como modelo o tematica a seguir "tareas a realizar" donde se tuvieron en cuenta los campos:
 
 
 - id
@@ -16,7 +16,7 @@ Este proyecto contiene los elementos solicitados en la prueba técnica para myHo
 Al correr la aplicación, realizada con la versión 15.2.10 de Angular, con el comando `ng serve` para ambiente de desarrollo y al navegar en `http://localhost:4200/`, debe visualizarse el listado de tareas con registros moqueados en código. En esta ventana se presentan los accesos para realizar las acciones de crear, modificar y eliminar, además de una opción para ver detalle de cada registro listado.
 
 
-El listado presentado puede ser filtrado a través del campo de texto ubicado en la parte superior de la ventana. Junto a esto, se puede ordenar por todas las columnas presentadas excepto por la coluna Actions.
+El listado presentado puede ser filtrado a través del campo de texto ubicado en la parte superior de la ventana. Junto a esto, las columnas presentadas en el listado se pueden ordenar al presionar sobre las cabeceras de cada columna, a excepción de la coluna Actions.
 
 
 El formulario de registro de tareas implementa Reactive forms.
