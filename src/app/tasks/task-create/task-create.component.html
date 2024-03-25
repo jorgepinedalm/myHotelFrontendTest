@@ -4,7 +4,7 @@
         <app-task-form (formValuesChanged)="linkFormData($event)"></app-task-form>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
-        <button mat-button mat-dialog-close>Close</button>
+        <button mat-button mat-dialog-close>Cancel</button>
         <button mat-raised-button color="primary" [disabled]="!isValidForm" (click)="createTask()">Save</button>
     </mat-dialog-actions>
 </div>

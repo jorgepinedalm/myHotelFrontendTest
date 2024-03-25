@@ -23,7 +23,7 @@ export class TaskDeleteComponent {
   }
 
   removeTask(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(true);
     this.store.dispatch(new DeleteTasks(this.idTask));
   }
 }

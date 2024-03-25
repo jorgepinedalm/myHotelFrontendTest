@@ -29,7 +29,10 @@ export class TaskEditComponent {
     this.idTask = data.dataKey;
     this.store.dispatch(new GetTaskById(this.idTask));
     this.selectedTask$?.subscribe((task:Task) => {
-      if(task) this.initialState = {...task};
+      if(task) {
+        this.initialState = {...task};
+        this.dataForm = this.initialState;
+      }
     })
     this.isValidForm = true;
   }
@@ -41,7 +44,7 @@ export class TaskEditComponent {
 
   editTask(): void {
     if(this.isValidForm){
-      this.dialogRef.close();
+      this.dialogRef.close(true);
       this.store.dispatch(new UpdateTasks(this.dataForm as Task, this.idTask));
     }    
   }

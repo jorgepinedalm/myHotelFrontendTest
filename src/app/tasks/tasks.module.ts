@@ -17,6 +17,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import { SharedModule } from '../shared/shared.module';
 import { TaskEditComponent } from './task-edit/task-edit.component';
 import { TaskDeleteComponent } from './task-delete/task-delete.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { TaskDeleteComponent } from './task-delete/task-delete.component';
     MatIconModule,
     MatTooltipModule,
     MatChipsModule,
+    MatSnackBarModule,
     SharedModule
   ]
 })

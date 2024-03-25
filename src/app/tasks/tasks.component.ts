@@ -13,6 +13,7 @@ import { PriorityTask } from '../enums/priority-task';
 import { TaskEditComponent } from './task-edit/task-edit.component';
 import { TaskCreateComponent } from './task-create/task-create.component';
 import { TaskDeleteComponent } from './task-delete/task-delete.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-tasks',
@@ -31,7 +32,8 @@ export class TasksComponent implements OnInit, AfterViewInit {
 
   constructor(
     private store: Store,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar
   ){
     this.tasks = [];
     this.displayedColumns = ['title', 'category', 'when', 'priority.id', 'isDone', 'actions'];
@@ -77,10 +79,6 @@ export class TasksComponent implements OnInit, AfterViewInit {
           dataKey: id
         }
       });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
 
   openTaskEdit(id:number) {
@@ -92,7 +90,7 @@ export class TasksComponent implements OnInit, AfterViewInit {
       });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      if(result) this.snackBar.open("The task has been modified successfully", undefined, {duration: 4000});
     });
   }
 
@@ -100,7 +98,7 @@ export class TasksComponent implements OnInit, AfterViewInit {
     const dialogRef = this.dialog.open(TaskCreateComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      if(result) this.snackBar.open("The task has been added successfully", undefined, {duration: 4000});
     });
   }
 
@@ -114,7 +112,7 @@ export class TasksComponent implements OnInit, AfterViewInit {
       });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      if(result) this.snackBar.open("The task has been removed successfully", undefined, {duration: 4000});
     });
     
   }
