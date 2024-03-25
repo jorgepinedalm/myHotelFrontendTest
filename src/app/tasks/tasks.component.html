@@ -1,8 +1,17 @@
 <div class="container mx-auto">
-    <mat-form-field>
-        <mat-label>Filter by name or category</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Type task name or category" #input>
-    </mat-form-field>
+    <div class="grid grid-cols-4 gap-4">
+        <mat-form-field class="w-full col-span-3">
+            <mat-label>Filter by name or category</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Type task name or category" #input>
+        </mat-form-field>
+        <div>
+            <button mat-fab extended color="accent" class="w-full" (click)="openCreateEdit()">
+                <mat-icon class="material-symbols-outlined">add</mat-icon>
+                Add task
+            </button>
+        </div>
+    </div>
+    
     <div class="mat-elevation-z8 rounded-md overflow-hidden mb-3">
         <table mat-table [dataSource]="dataSource" matSort>
 

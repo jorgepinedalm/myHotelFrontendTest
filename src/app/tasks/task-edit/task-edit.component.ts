@@ -1,11 +1,12 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Select, Store } from '@ngxs/store';
 import * as moment from 'moment';
 import { Observable } from 'rxjs';
 import { GetTaskById, UpdateTasks } from 'src/app/actions/app.actions';
 import { AppState } from 'src/app/states/app.state';
 import { Task } from "../../models/task";
+import { FormValues } from 'src/app/models/form-values.model';
 
 @Component({
   selector: 'app-task-edit',
@@ -17,29 +18,35 @@ export class TaskEditComponent {
   @Select(AppState.selectSelectedTask) selectedTask$?: Observable<Task>;
   initialState?:Task;
   dataForm?:Task;
+  isValidForm:boolean;
   idTask:number;
   
   constructor(
     private store: Store,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private dialogRef: MatDialogRef<TaskEditComponent>
   ){
     this.idTask = data.dataKey;
     this.store.dispatch(new GetTaskById(this.idTask));
     this.selectedTask$?.subscribe((task:Task) => {
-      this.initialState = {...task};
+      if(task) this.initialState = {...task};
     })
+    this.isValidForm = true;
   }
 
-  linkFormData(data:Task):void{
-    this.dataForm = data;
+  linkFormData(data:FormValues):void{
+    this.dataForm = data.task;
+    this.isValidForm = data.isValidForm;
   }
 
-  editTask():void{
-    this.store.dispatch(new UpdateTasks(this.dataForm as Task, this.idTask));
+  editTask(): void {
+    if(this.isValidForm){
+      this.dialogRef.close();
+      this.store.dispatch(new UpdateTasks(this.dataForm as Task, this.idTask));
+    }    
   }
 
   onDateInput(event: any) {
-    console.log(event);
     if (event.value) {
       // Format the date manually
       const formattedDate = moment(event.value).format('DD.MM.YYYY');

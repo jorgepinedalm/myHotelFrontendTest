@@ -6,6 +6,7 @@ import { GetCategories, GetPriorities } from 'src/app/actions/data.actions';
 import { DataList } from 'src/app/models/data-list.model';
 import { DataState } from 'src/app/states/data.state';
 import { Task } from "../../models/task";
+import { FormValues } from 'src/app/models/form-values.model';
 
 @Component({
   selector: 'app-task-form',
@@ -16,7 +17,7 @@ export class TaskFormComponent implements OnInit, OnChanges {
   @Input()
   public initialState?: { [key: string]: any };
   @Output()
-  public formValuesChanged = new EventEmitter<Task>();
+  public formValuesChanged = new EventEmitter<FormValues>();
   public form: FormGroup;
   @Select(DataState.selectStateCategories) categories$?: Observable<DataList[]>;
   @Select(DataState.selectStatePriorities) priorities$?: Observable<DataList[]>;
@@ -60,7 +61,8 @@ export class TaskFormComponent implements OnInit, OnChanges {
   subscribeFormChanges():void{
     this.form.valueChanges.subscribe((val) => {
       val.priority = this.priorities.find(priority => priority.value == val.priority);
-      this.formValuesChanged.emit(val);
+      console.log("formValid: ", this.form.valid);
+      this.formValuesChanged.emit({task:val ,isValidForm: this.form.valid});
     });
   }
 }

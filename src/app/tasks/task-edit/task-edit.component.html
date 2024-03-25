@@ -5,6 +5,6 @@
     </mat-dialog-content>
     <mat-dialog-actions align="end">
         <button mat-button mat-dialog-close>Close</button>
-        <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)="editTask()">Save</button>
+        <button mat-raised-button color="primary" [disabled]="!isValidForm" (click)="editTask()">Save</button>
     </mat-dialog-actions>
 </div>
