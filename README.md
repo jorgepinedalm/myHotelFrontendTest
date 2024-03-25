@@ -1,27 +1,35 @@
-# MyMusic
+# My Task
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.4.
+Este proyecto contiene los elementos solicitados en la prueba técnica para myHotel presentado por Jorge Pineda Montagut. Para esta, se escogió como modelo a seguir "tareas a realizar" donde se tuvieron en cuenta los campos:
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- id
+- title (nombre de la tarea)
+- descripcion (Opcional)
+- when (fecha en la que realizará la tarea)
+- where (lugar donde se estaría haciendo la tarea)
+- priority (prioridad de la tarea. Se representa con el código de colores indicados en la prueba)
+- withWho (arreglo de nombre de personas)
+- isDone (estado de la tarea)
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Al correr la aplicación, realizada con la versión 15.2.10 de Angular, con el comando `ng serve` para ambiente de desarrollo y al navegar en `http://localhost:4200/`, debe visualizarse el listado de tareas con registros moqueados en código. En esta ventana se presentan los accesos para realizar las acciones de crear, modificar y eliminar, además de una opción para ver detalle de cada registro listado.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+El listado presentado puede ser filtrado a través del campo de texto ubicado en la parte superior de la ventana. Junto a esto, se puede ordenar por todas las columnas presentadas excepto por la coluna Actions.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+El formulario de registro de tareas implementa Reactive forms.
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Se creó la directiva howLongAgoWasTheDate para representar la diferencia en días de la fecha de realización de una tarea. Esto puede ser visualizado en la columna When del listado de tareas y puede visualizarse la fecha en el formato indicado en la descripción de la prueba al pasar el mouse sobre los valores de esa columna.
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Todo el código y comentarios en esta aplicación esta en inglés.
+
+
+La aplicación hace uso del paquete NGXS para el manejo de estado incluyendo elementos como Actions, States y Selectors. Con lo anterior, se dejó integrado @ngxs/logger-plugin para que puedan mirar facilmente en la consola del navegador el manejo del estado logrado. 
+
+
+Para los componentes visuales se usó Material angular y se utilizaron algunas utilidades CSS de Tailwind.
+

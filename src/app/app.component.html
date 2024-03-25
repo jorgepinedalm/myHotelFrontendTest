@@ -1,11 +1,8 @@
 <mat-toolbar>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
   <span>My tasks</span>
   <span class="example-spacer"></span>
   <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>favorite</mat-icon>
+    <mat-icon class="material-symbols-outlined">description</mat-icon>
   </button>
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
     <mat-icon>share</mat-icon>
@@ -13,5 +10,8 @@
 </mat-toolbar>
 <div class="py-4">
   <router-outlet></router-outlet>
+</div>
+<div class="text-center text-stone-500">
+  <em>By Jorge Pineda Montagut</em>
 </div>
 
