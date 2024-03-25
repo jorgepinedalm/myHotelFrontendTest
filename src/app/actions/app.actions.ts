@@ -20,7 +20,7 @@ export class AddTasks {
 //Update
 export class UpdateTasks {
     static readonly type = '[Tasks] Update';
-    constructor(public payload: Task, public id: number, public i:number) { }
+    constructor(public payload: Task, public id: number) { }
 }
 
 //Delete

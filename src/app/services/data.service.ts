@@ -15,7 +15,8 @@ export class DataService {
       {id: 1, value: "Home"},
       {id: 2, value: "Work"},
       {id: 3, value: "Friends"},
-      {id: 4, value: "Family"}
+      {id: 4, value: "Family"},
+      {id: 5, value: "Other"}
     ]
     this.priorities = [
       {id: 1, value: "Low"},

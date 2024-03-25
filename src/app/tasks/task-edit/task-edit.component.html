@@ -1,9 +1,10 @@
 <div class="dialog">
     <h2 mat-dialog-title>Edit task</h2>
     <mat-dialog-content class="mat-typography">
-        <app-task-form></app-task-form>
+        <app-task-form [initialState]="initialState" (formValuesChanged)="linkFormData($event)"></app-task-form>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
         <button mat-button mat-dialog-close>Close</button>
+        <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)="editTask()">Save</button>
     </mat-dialog-actions>
 </div>
