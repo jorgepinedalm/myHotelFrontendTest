@@ -29,7 +29,7 @@ Para las acciones de crear y eliminar se creó un formulario para el ingreso de 
 El formulario de registro de tareas implementa Reactive forms.
 
 
-Se creó la directiva howLongAgoWasTheDate para representar la diferencia en días de la fecha de realización de una tarea. Esto puede ser visualizado en la columna When del listado de tareas y puede visualizarse la fecha en el formato indicado en la descripción de la prueba al pasar el mouse sobre los valores de esa columna.
+Se creó el pipe howLongAgoWasTheDate para representar la diferencia en días de la fecha de realización de una tarea. Esto puede ser visualizado en la columna When del listado de tareas y puede visualizarse la fecha en el formato indicado en la descripción de la prueba al pasar el mouse sobre los valores de esa columna.
 
 
 Todo el código y comentarios en esta aplicación esta en inglés.
